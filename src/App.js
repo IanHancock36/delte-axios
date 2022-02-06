@@ -12,8 +12,11 @@ function App() {
      }).catch(error => console.log(error))
   }, [])
 
-  const postData = (e)=> {
-    e.preventDefault()
+  const postData = (error)=> {
+    error.preventDefault()
+    axios.post('https://jsonplaceholder.typicode.com/posts',{title})
+    .then(res => console.log("POSTING DATA",res))
+    .catch(error => console.log(error))
   }
   // I like rendering the map then taking the variable name and applying it like below
   const arr = data.map((data , index )=> {
@@ -34,9 +37,9 @@ function App() {
         <div>
         
       <h1>Title</h1>
-      <input value ={title} onChang={(e)=> setTitle(e.target.value)}/>
+      <input type="text" value ={title} onChange={(e)=> setTitle(e.target.value)}/>
 
-        <button title="SEND POST" onClick={postData}/>
+        <button title="SEND POST" onClick={postData}>send post</button>
         </div>
       </form>
       <div>{arr}</div>
