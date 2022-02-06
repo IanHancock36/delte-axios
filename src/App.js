@@ -10,14 +10,22 @@ function App() {
        setData(response.data)
      }).catch(error => console.log(error))
   }, [])
+  const arr = data.map((data , index )=> {
+    return (
+      <div>
+      <div>
+        {data.id}
+      </div>
+      <div>{data.title}</div>
+      </div>
+
+    )
+  })
   return (
     <div className="App">
       <h1>AXIOS GET POST DELETE</h1>
-      {data.map((title)=> (
-      
-             <div>{data.title}</div>
-      ))}
-      <div></div>
+   
+      <div>{arr}</div>
     </div>
   );
 }
