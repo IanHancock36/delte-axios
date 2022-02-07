@@ -18,6 +18,12 @@ function App() {
       .then(res => console.log("POSTING DATA", res))
       .catch(error => console.log(error))
   }
+  const postDelete = (id, error) => {
+    error.preventDefault()
+    axios.delete(`https://jsonplaceholder.typicode.com/posts${id}`)
+      .then(res => console.log("Delete DATA", res))
+      .catch(error => console.log(error))
+  }
   // I like rendering the map then taking the variable name and applying it like below
   const arr = data.map((data, index) => {
     return (
@@ -39,7 +45,7 @@ function App() {
           <h1>Title</h1>
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
           <button title="SEND POST" onClick={postData}>send post</button>
-          <button title= "delete post">delete post</button>
+          <button title="delete post" onClick={postDelete(data.id)}>delete post</button>
         </div>
       </form>
       <div>{arr}</div>
