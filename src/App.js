@@ -20,7 +20,7 @@ function App() {
   }
   const postDelete = (id, error) => {
     error.preventDefault()
-    axios.delete(`https://jsonplaceholder.typicode.com/posts${id}`)
+    axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .then(res => console.log("Delete DATA", res))
       .catch(error => console.log(error))
   }
@@ -31,7 +31,10 @@ function App() {
         <div style={{ border: '1px solid black' }}>
           {data.id}
         </div>
+        <div>
         <div>{data.title}</div>
+        <button title="delete post" onClick={(error)=> postDelete(data.id , error)}>delete post</button>
+        </div>
       </div>
 
     )
@@ -45,7 +48,7 @@ function App() {
           <h1>Title</h1>
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
           <button title="SEND POST" onClick={postData}>send post</button>
-          <button title="delete post" onClick={postDelete(data.id)}>delete post</button>
+         
         </div>
       </form>
       <div>{arr}</div>
